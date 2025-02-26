@@ -7,7 +7,7 @@ from .serializers import *
 
 # get all notes 
 @api_view(['GET'])
-def create_note(request):
+def get_notes(request):
     notes = Note.objects.all()
     serializer = NoteSerializer(notes, many=True)
     return Response({'status': 200, 'payload': serializer.data})
