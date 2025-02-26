@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.decorator import api_view
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import *
@@ -32,7 +32,7 @@ def get_note(request, pk):
 
 # modify note content for particular pk
 @api_view(['POST'])
-def update_contents(request, pk):
+def update_note(request, pk):
     try:
         note = Note.objects.get(pk=pk)
     except:
