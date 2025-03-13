@@ -55,7 +55,8 @@ function App() {
     return (
         <div className="App">
             <div className="Menu">
-                Menu
+                <button>hide</button>
+                <button>user</button>
             </div>
             <div className="Container">
                 <NoteListPane notes={notes} selectedNote={selectedNote} onSelectNote={selectNote} onAddNote={addNote} onDeleteNote={deleteNote}/>
@@ -129,11 +130,11 @@ const NoteEditor = ({ selectedNote, notes, onUpdateNotes }) => {
 
         // update notes list ui
         const note = notes.find((note) => note.id === selectedNote);
-        note.title = title;
+        note.title = event.target.value;
         onUpdateNotes(notes);
 
         // auto save when title is changed
-        axios.put(`http://localhost:8000/note/update/title/${selectedNote}/`, {'title': title})
+        axios.put(`http://localhost:8000/note/update/title/${selectedNote}/`, {'title': event.target.value})
             .catch((error) => console.error('error: ', error)
         );
     }
@@ -143,7 +144,7 @@ const NoteEditor = ({ selectedNote, notes, onUpdateNotes }) => {
         setContent(event.target.value);
 
         // auto save when content is changed
-        axios.put(`http://localhost:8000/note/update/content/${selectedNote}/`, {'content': content})
+        axios.put(`http://localhost:8000/note/update/content/${selectedNote}/`, {'content': event.target.value})
             .then((request) => {
                 const note = notes.find((note) => note.id === selectedNote);
                 note.content = request.data.content;

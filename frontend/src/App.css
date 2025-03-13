@@ -17,6 +17,11 @@ body {
 .Menu {
     background-color: #202020;
     height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .Container {
