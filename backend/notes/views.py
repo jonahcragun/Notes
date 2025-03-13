@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.decorator import api_view
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import *
@@ -19,6 +19,8 @@ def create_note(request):
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 # get note content for particular pk
 @api_view(['GET'])
@@ -31,13 +33,25 @@ def get_note(request, pk):
     return Response({'status': 200, 'payload': serializer.data})
 
 # modify note content for particular pk
-@api_view(['POST'])
-def update_contents(request, pk):
+@api_view(['PUT'])
+def update_note_content(request, pk):
     try:
         note = Note.objects.get(pk=pk)
     except:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    note.content = request.data
+    note.content = request.data['content']
+    note.save()
+    serializer = NoteSerializer(note)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+# update note title in db
+@api_view(['PUT'])
+def update_note_title(request, pk):
+    try: 
+        note = Note.objects.get(pk=pk)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    note.title = request.data['title']
     note.save()
     serializer = NoteSerializer(note)
     return Response(serializer.data, status=status.HTTP_200_OK)

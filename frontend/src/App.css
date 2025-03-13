@@ -1,38 +1,203 @@
+p {
+    margin: 0px;
+}
+
+body {
+    background-color: #333533;
+}
+
 .App {
-  text-align: center;
+    color: white;
+    background-color: #333533;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Menu {
+    background-color: #202020;
+    height: 50px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Container {
+    display: flex;
+    margin-top: 10px;
+    flex-grow: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* left pane styles */
+
+.NoteListPane {
+    background-color: #202020;
+    width: 30%;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+
+.NotesHeader {
+    margin-left: 30px;
+    margin-right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.AddNoteButton {
+    color: white;
+    font-size: 35px;
+    background-color: #202020;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AddNoteButton:hover {
+    cursor: pointer;
+    font-size: 45px;
+    transition: font-size 0.1s ease;
+}
+
+.NoteListBody {
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: hidden;
+    max-height: calc(100vh - 140px);
+}
+
+.NotFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #c5c3c6;
+}
+
+.NoteList {
+    list-style-type: none;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 30px;
+    margin-right: 30px;
+    overflow-y: auto;
+    max-height: 100%;
+    scrollbar-width: none;
+}
+
+.NoteListItem {
+    margin-top: 10px;
+    height: 50px;
+    border-bottom: 1px solid #333533;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.DeleteButton {
+    background-color: #db3a34;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+}
+
+.DeleteButton:hover {
+    background-color: #ab2a24;
+    cursor: pointer;
+}
+
+.NoteItemLastUpdated {
+    color: #a5a3a6;
+    font-size: 12px;
+}
+
+.NoteItemTitle {
+    font-weight: bold;
+    font-size: 20px;
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+.SelectedNote {
+    background-color: #034078;
+    padding-top: 10px;
+    height: 50px;
+    border-bottom: 1px solid #333533;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* right pane styles */
+
+.NoteViewPane {
+    display: flex;
+    background-color: #202020;
+    flex-grow: 1;
+}
+
+.TitleInput {
+    height: 80px;
+    background-color: #202020;
+    border: none;
+    color: white;
+    font-size: 35px;
+    margin-left: 30px;
+    font-weight: bold;
+    border-bottom: 1px solid #333533;
+    margin-right: 30px;
+    padding-left: 15px;
+}
+
+.TitleInput:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #333533;
+}
+
+.TitleInput::placeholder {
+    color: #434543;
+}
+
+.NoteEditor {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.ContentInput {
+    border: none;
+    outline: none;
+    margin: 0;
+    margin-left: 30px;
+    margin-right: 30px;
+    height: 100%;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    background-color: #202020;
+    color: white;
+    font-size: 18px;
+    resize: none;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.ContentInput:focus {
+    border: none;
+    outline: none;
+}
+
+.ContentInput::placeholder {
+    color: #434543;
 }
