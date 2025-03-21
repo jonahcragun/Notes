@@ -2,6 +2,15 @@ p {
     margin: 0px;
 }
 
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 30px;
+}
+
 body {
     background-color: #333533;
 }
@@ -111,7 +120,7 @@ body {
     background-color: #db3a34;
     height: 25px;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .DeleteButton:hover {
@@ -157,7 +166,7 @@ body {
     background-color: #202020;
     border: none;
     color: white;
-    font-size: 35px;
+    font-size: 30px;
     margin-left: 30px;
     font-weight: bold;
     border-bottom: 1px solid #333533;
@@ -205,4 +214,22 @@ body {
 
 .ContentInput::placeholder {
     color: #434543;
+}
+
+.MenuButton {
+    background-color: #434543;
+    color: white;
+    border: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+.MenuButton:hover {
+    background-color: #636563;
+    cursor: pointer;
 }
