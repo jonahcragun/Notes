@@ -142,7 +142,7 @@ const NoteViewPane = ({ selectedNote, notes, onUpdateNotes }) => (
 const NoteEditor = ({ selectedNote, notes, onUpdateNotes }) => {
     const selectFlag = useRef(true);
     const [title, setTitle] = useState(notes.find((note) => note.id === selectedNote).title);
-    const [content, setContent] = useState('');
+    const [content, setContent] = useState(notes.find((note) => note.id == selectedNote).content);
     const titleDebounce = useDebounce(title, 500) // delay of 500ms
     const contentDebounce = useDebounce(content, 500) // delay of 500ms
 
@@ -182,7 +182,6 @@ const NoteEditor = ({ selectedNote, notes, onUpdateNotes }) => {
     useEffect(() => {
         // auto save when content is changed
         if (!selectFlag.current) {
-            console.log(contentDebounce);
             axios.put(`http://localhost:8000/note/update/content/${selectedNote}/`, {'content': contentDebounce})
                 .then((response) => {
                     const note = notes.find((note) => note.id === selectedNote);
